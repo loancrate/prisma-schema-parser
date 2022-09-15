@@ -1,0 +1,63 @@
+{
+  "name": "@loancrate/prisma-schema-parser",
+  "version": "1.0.0",
+  "description": "Prisma Schema Parser",
+  "keywords": [
+    "parser",
+    "prisma",
+    "schema"
+  ],
+  "homepage": "https://github.com/loancrate/prisma-schema-parser#readme",
+  "bugs": {
+    "url": "https://github.com/loancrate/prisma-schema-parser/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loancrate/prisma-schema-parser.git"
+  },
+  "license": "ISC",
+  "author": "Trevor Robinson",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.build.json",
+    "lint": "eslint src --ext .ts",
+    "generate-peggy": "./scripts/generate-peggy.sh",
+    "prepare": "npm run generate-peggy && npm run build",
+    "prepublishOnly": "npm run test && npm run lint",
+    "prettier": "prettier . --write",
+    "test": "jest"
+  },
+  "dependencies": {
+    "catch-unknown": "^1.0.0",
+    "error-cause": "^1.0.4",
+    "no-case": "^3.0.4",
+    "type-fest": "^2.19.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "@types/error-cause": "^1.0.1",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^8.20.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.3",
+    "lint-staged": "^13.0.3",
+    "peggy": "^2.0.1",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4"
+  },
+  "lint-staged": {
+    "*.{ts,md}": "prettier --list-different",
+    "*.ts": "eslint"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

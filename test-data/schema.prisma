@@ -1,0 +1,48 @@
+// Schema comment
+
+/// Doc comment
+generator client {
+  provider = "prisma-client-js" // Trailing comment
+  output   = "src/__generated__/PrismaClient"
+}
+
+datasource postgresql {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum MyEnum {
+  FirstValue  @map("v1") // Enum value comment
+  SecondValue
+  ThirdValue
+}
+
+model MyModel {
+  id        String   @id @default(uuid()) @map("_id") // Field comment
+  type      MyEnum?
+  version   Int      @default(0)
+  uniqueKey String   @unique @map("unique_key")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  children MyOtherModel[]
+
+  @@unique([type, version]) // Block attribute comment
+  @@index([createdAt])
+  @@map("my_model")
+}
+
+type MyType {
+  field1 Float
+  field2 Boolean             @default(true)
+  field3 Json
+  field4 Unsupported("type")
+}
+
+model MyOtherModel {
+  id       String @id @default(uuid()) @map("_id")
+  parentId String
+  text     String
+
+  parent MyModel @relation(fields: [parentId], references: [id])
+}
