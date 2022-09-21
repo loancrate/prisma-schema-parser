@@ -21,14 +21,14 @@ model MyModel {
   id        String   @id @default(uuid()) @map("_id") // Field comment
   type      MyEnum?
   version   Int      @default(0)
-  uniqueKey String   @unique @map("unique_key")
+  uniqueKey String   @unique(sort: Asc) @map("unique_key")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 
   children MyOtherModel[]
 
   @@unique([type, version]) // Block attribute comment
-  @@index([createdAt])
+  @@index([createdAt(sort: Desc, ops: raw("other"))], type: BTree)
   @@map("my_model")
 }
 

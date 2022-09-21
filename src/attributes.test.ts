@@ -44,7 +44,7 @@ describe("findIdFieldAttribute", () => {
               {
                 kind: "namedArgument",
                 name: { kind: "name", value: "sort" },
-                expression: { kind: "literal", value: "Desc" },
+                expression: { kind: "path", value: ["Desc"] },
               },
               {
                 kind: "namedArgument",
@@ -77,7 +77,7 @@ describe("findIdFieldAttribute", () => {
               {
                 kind: "namedArgument",
                 name: { kind: "name", value: "sort" },
-                expression: { kind: "literal", value: "none" },
+                expression: { kind: "path", value: ["none"] },
               },
             ],
           },
@@ -110,11 +110,9 @@ describe("findIdBlockAttribute", () => {
         ],
       })
     ).toStrictEqual<IdBlockAttribute>({
-      fields: ["a", "b"],
+      fields: [{ name: "a" }, { name: "b" }],
       name: undefined,
       map: undefined,
-      length: undefined,
-      sort: undefined,
       clustered: undefined,
     });
   });
@@ -199,11 +197,9 @@ describe("findUniqueBlockAttributes", () => {
       })
     ).toStrictEqual<UniqueBlockAttribute[]>([
       {
-        fields: ["a", "b"],
+        fields: [{ name: "a" }, { name: "b" }],
         name: undefined,
         map: undefined,
-        length: undefined,
-        sort: undefined,
         clustered: undefined,
       },
     ]);
@@ -225,13 +221,23 @@ describe("findIndexBlockAttributes", () => {
                 kind: "array",
                 items: [
                   { kind: "path", value: ["a"] },
-                  { kind: "path", value: ["b"] },
+                  {
+                    kind: "functionCall",
+                    path: { kind: "path", value: ["b"] },
+                    args: [
+                      {
+                        kind: "namedArgument",
+                        name: { kind: "name", value: "ops" },
+                        expression: { kind: "path", value: ["op"] },
+                      },
+                    ],
+                  },
                 ],
               },
               {
                 kind: "namedArgument",
-                name: { kind: "name", value: "ops" },
-                expression: { kind: "literal", value: "op" },
+                name: { kind: "name", value: "type" },
+                expression: { kind: "path", value: ["BTree"] },
               },
             ],
           },
@@ -243,43 +249,87 @@ describe("findIndexBlockAttributes", () => {
                 kind: "array",
                 items: [
                   { kind: "path", value: ["c"] },
-                  { kind: "path", value: ["d"] },
+                  {
+                    kind: "functionCall",
+                    path: { kind: "path", value: ["d"] },
+                    args: [
+                      {
+                        kind: "namedArgument",
+                        name: { kind: "name", value: "ops" },
+                        expression: {
+                          kind: "functionCall",
+                          path: { kind: "path", value: ["op"] },
+                        },
+                      },
+                    ],
+                  },
                 ],
               },
-              {
-                kind: "namedArgument",
-                name: { kind: "name", value: "ops" },
-                expression: {
-                  kind: "functionCall",
-                  path: { kind: "path", value: ["op"] },
-                },
-              },
             ],
+          },
+          {
+            kind: "blockAttribute",
+            path: { kind: "path", value: ["index"] },
+            args: [{ kind: "path", value: ["e"] }],
           },
         ],
       })
     ).toStrictEqual<IndexBlockAttribute[]>([
       {
-        fields: ["a", "b"],
+        fields: [
+          { name: "a" },
+          { name: "b", length: undefined, sort: undefined, ops: "op" },
+        ],
         name: undefined,
         map: undefined,
-        length: undefined,
-        sort: undefined,
         clustered: undefined,
-        type: undefined,
-        ops: "op",
+        type: "BTree",
       },
       {
-        fields: ["c", "d"],
+        fields: [
+          { name: "c" },
+          { name: "d", length: undefined, sort: undefined, ops: "op()" },
+        ],
         name: undefined,
         map: undefined,
-        length: undefined,
-        sort: undefined,
         clustered: undefined,
         type: undefined,
-        ops: "op()",
+      },
+      {
+        fields: [{ name: "e" }],
+        name: undefined,
+        map: undefined,
+        clustered: undefined,
+        type: undefined,
       },
     ]);
+  });
+
+  test("invalid field", () => {
+    expect(() =>
+      findIndexBlockAttributes({
+        kind: "model",
+        name: { kind: "name", value: "M" },
+        members: [
+          {
+            kind: "blockAttribute",
+            path: { kind: "path", value: ["index"] },
+            args: [
+              {
+                kind: "array",
+                items: [{ kind: "literal", value: "a" }],
+              },
+            ],
+            location: {
+              start: { offset: 647, line: 31, column: 3 },
+              end: { offset: 667, line: 31, column: 23 },
+            },
+          },
+        ],
+      })
+    ).toThrow(
+      "Invalid attribute @@index at 31:3-23 for model M: Field reference or function call expected but got literal"
+    );
   });
 
   test("invalid ops", () => {
@@ -296,13 +346,18 @@ describe("findIndexBlockAttributes", () => {
                 kind: "array",
                 items: [
                   { kind: "path", value: ["a"] },
-                  { kind: "path", value: ["b"] },
+                  {
+                    kind: "functionCall",
+                    path: { kind: "path", value: ["b"] },
+                    args: [
+                      {
+                        kind: "namedArgument",
+                        name: { kind: "name", value: "ops" },
+                        expression: { kind: "literal", value: 42 },
+                      },
+                    ],
+                  },
                 ],
-              },
-              {
-                kind: "namedArgument",
-                name: { kind: "name", value: "ops" },
-                expression: { kind: "literal", value: 42 },
               },
             ],
             location: {
@@ -313,7 +368,7 @@ describe("findIndexBlockAttributes", () => {
         ],
       })
     ).toThrow(
-      "Invalid attribute @@index at 31:3-23 for model M: String literal or function call expected for argument ops but got literal"
+      "Invalid attribute @@index at 31:3-23 for model M: Identifier or function call expected for argument ops but got literal"
     );
   });
 });

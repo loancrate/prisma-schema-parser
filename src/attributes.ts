@@ -12,6 +12,7 @@ import {
   getModelAttributes,
   hasBlockAttributes,
   readBooleanArgument,
+  readFieldReferenceArgument,
   readFieldReferencesArgument,
   readNumberArgument,
   readStringArgument,
@@ -61,7 +62,10 @@ function parseIdFieldAttribute(attr: SchemaAttribute): IdFieldAttribute {
       readNumberArgument
     ),
     sort: applyOptional(
-      applyOptional(findArgument(attr.args, "sort"), readStringArgument),
+      applyOptional(
+        findArgument(attr.args, "sort"),
+        readFieldReferenceArgument
+      ),
       asSortOrder
     ),
     clustered: applyOptional(
@@ -71,12 +75,50 @@ function parseIdFieldAttribute(attr: SchemaAttribute): IdFieldAttribute {
   };
 }
 
-export interface IdBlockAttribute {
-  fields: string[];
-  name?: string;
-  map?: string;
+export interface IndexField {
+  name: string;
   length?: number;
   sort?: SortOrder;
+  ops?: string;
+}
+
+function readFieldArgument(arg: SchemaArgument): IndexField {
+  const expr = getArgumentExpression(arg);
+  if (expr.kind === "path") {
+    return { name: joinPath(expr.value) };
+  }
+  if (expr.kind === "functionCall") {
+    return {
+      name: joinPath(expr.path.value),
+      length: applyOptional(
+        findArgument(expr.args, "length"),
+        readNumberArgument
+      ),
+      sort: applyOptional(
+        applyOptional(
+          findArgument(expr.args, "sort"),
+          readFieldReferenceArgument
+        ),
+        asSortOrder
+      ),
+      ops: applyOptional(findArgument(expr.args, "ops"), readOpsArgument),
+    };
+  }
+  throw getArgumentTypeError(arg, "Field reference or function call");
+}
+
+function readFieldsArgument(arg: SchemaArgument): IndexField[] {
+  const expr = getArgumentExpression(arg);
+  if (expr.kind === "array") {
+    return expr.items.map(readFieldArgument);
+  }
+  return [readFieldArgument(arg)];
+}
+
+export interface IdBlockAttribute {
+  fields: IndexField[];
+  name?: string;
+  map?: string;
   clustered?: boolean;
 }
 
@@ -88,9 +130,13 @@ export function findIdBlockAttribute(
 
 function parseIdBlockAttribute(attr: SchemaAttribute): IdBlockAttribute {
   return {
-    fields: readFieldReferencesArgument(getArgument(attr.args, "fields", 0)),
+    fields: readFieldsArgument(getArgument(attr.args, "fields", 0)),
     name: applyOptional(findArgument(attr.args, "name"), readStringArgument),
-    ...parseIdFieldAttribute(attr),
+    map: applyOptional(findArgument(attr.args, "map"), readStringArgument),
+    clustered: applyOptional(
+      findArgument(attr.args, "clustered"),
+      readBooleanArgument
+    ),
   };
 }
 
@@ -122,11 +168,9 @@ export function findUniqueFieldAttribute(
 }
 
 export interface UniqueBlockAttribute {
-  fields: string[];
+  fields: IndexField[];
   name?: string;
   map?: string;
-  length?: number;
-  sort?: SortOrder;
   clustered?: boolean;
 }
 
@@ -137,14 +181,11 @@ export function findUniqueBlockAttributes(
 }
 
 export interface IndexBlockAttribute {
-  fields: string[];
+  fields: IndexField[];
   name?: string;
   map?: string;
-  length?: number;
-  sort?: SortOrder;
   clustered?: boolean;
   type?: string;
-  ops?: string;
 }
 
 export function findIndexBlockAttributes(
@@ -152,20 +193,22 @@ export function findIndexBlockAttributes(
 ): IndexBlockAttribute[] {
   return parseAttributesWith(decl, "index", (attr) => ({
     ...parseIdBlockAttribute(attr),
-    type: applyOptional(findArgument(attr.args, "type"), readStringArgument),
-    ops: applyOptional(findArgument(attr.args, "ops"), readOpsArgument),
+    type: applyOptional(
+      findArgument(attr.args, "type"),
+      readFieldReferenceArgument
+    ),
   }));
 }
 
 export function readOpsArgument(arg: SchemaArgument): string {
   const expr = getArgumentExpression(arg);
+  if (expr.kind === "path") {
+    return joinPath(expr.value);
+  }
   if (expr.kind === "functionCall") {
     return formatAst(expr);
   }
-  if (expr.kind === "literal" && typeof expr.value === "string") {
-    return expr.value;
-  }
-  throw getArgumentTypeError(arg, "String literal or function call");
+  throw getArgumentTypeError(arg, "Identifier or function call");
 }
 
 const referentialActions = [

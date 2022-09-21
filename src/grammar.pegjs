@@ -162,19 +162,18 @@ identifier = head:[0-9a-z]i tail:[0-9a-z_-]i*
 // Expressions & Functions
 // ######################################
 
-expression = function_call / constant_expression
-
 function_call = path:path __ args:arguments_list
 { return { kind: "functionCall", path, args }; }
 
-array_expression = "[" __ items:constant_expression_list? __ "]"
+array_expression = "[" __ items:expression_list? __ "]"
 { return { kind: "array", items: optionalList(items) }; }
 
-constant_expression_list = head:constant_expression __ tail:("," __ constant_expression)*
+expression_list = head:expression __ tail:("," __ expression)*
 { return buildList(head, tail, 2); }
 
-constant_expression
-  = array_expression
+expression
+  = function_call
+  / array_expression
   / boolean_literal
   / numeric_literal
   / string_literal

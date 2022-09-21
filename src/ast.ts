@@ -142,12 +142,11 @@ export interface NameNode {
   location?: SourceRange;
 }
 
-export type SchemaExpression = ConstantExpression | FunctionCall;
-
-export type ConstantExpression =
+export type SchemaExpression =
   | ScalarLiteral
   | PathExpression
-  | ArrayExpression;
+  | ArrayExpression
+  | FunctionCall;
 
 export interface ScalarLiteral<T = string | number | boolean> {
   kind: "literal";
@@ -162,7 +161,7 @@ export interface PathExpression {
 
 export interface ArrayExpression {
   kind: "array";
-  items: ConstantExpression[];
+  items: SchemaExpression[];
 }
 
 export interface FunctionCall {
