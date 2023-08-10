@@ -10,6 +10,7 @@ const nestedNodeMap: {
   schema: ["declarations"],
   model: ["name", "members"],
   type: ["name", "members"],
+  view: ["name", "members"],
   enum: ["name", "members"],
   datasource: ["name", "members"],
   generator: ["name", "members"],

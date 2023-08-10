@@ -4,6 +4,7 @@
 generator client {
   provider = "prisma-client-js" // Trailing comment
   output   = "src/__generated__/PrismaClient"
+  previewFeatures = ["views"]
 }
 
 datasource postgresql {
@@ -45,4 +46,13 @@ model MyOtherModel {
   text     String
 
   parent MyModel @relation(fields: [parentId], references: [id])
+}
+
+view MyView {
+  id    Int    @id @map("_id")
+  email String
+  name  String
+  bio   String
+
+  @@map("my_view")
 }

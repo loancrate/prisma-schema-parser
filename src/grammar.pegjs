@@ -23,11 +23,11 @@ declarations = head:declaration tail:(WS declaration)*
 declaration = model_declaration / enum_declaration / config_block / type_alias / comment_block
 
 // ######################################
-// Model and composite types
+// Model, view and composite types
 // ######################################
 
 // At the syntax level, models and composite types are the same.
-model_declaration = kind:("model" / "type") __ name:name __ "{" WS members:model_declaration_members? WS "}"
+model_declaration = kind:("model" / "type" / "view") __ name:name __ "{" WS members:model_declaration_members? WS "}"
 { return { kind, name, members: optionalList(members), location: location() }; }
 
 model_declaration_members = head:model_declaration_member tail:(WS model_declaration_member)*

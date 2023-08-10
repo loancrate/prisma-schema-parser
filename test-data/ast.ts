@@ -76,10 +76,32 @@ const ast: PrismaSchema = {
             end: { offset: 151, line: 6, column: 46 },
           },
         },
+        {
+          kind: "config",
+          name: {
+            kind: "name",
+            value: "previewFeatures",
+            location: {
+              start: { offset: 154, line: 7, column: 3 },
+              end: { offset: 169, line: 7, column: 18 },
+            },
+          },
+          value: {
+            kind: "array",
+            items: [
+              { kind: "literal", value: "views" },
+            ],
+          },
+          comment: null,
+          location: {
+            start: { offset: 154, line: 7, column: 3 },
+            end: { offset: 181, line: 7, column: 30 },
+          },
+        },
       ],
       location: {
         start: { offset: 35, line: 4, column: 1 },
-        end: { offset: 153, line: 7, column: 2 },
+        end: { offset: 183, line: 8, column: 2 },
       },
     },
     {
@@ -88,8 +110,8 @@ const ast: PrismaSchema = {
         kind: "name",
         value: "postgresql",
         location: {
-          start: { offset: 166, line: 9, column: 12 },
-          end: { offset: 176, line: 9, column: 22 },
+          start: { offset: 196, line: 10, column: 12 },
+          end: { offset: 206, line: 10, column: 22 },
         },
       },
       members: [
@@ -99,15 +121,15 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "provider",
             location: {
-              start: { offset: 181, line: 10, column: 3 },
-              end: { offset: 189, line: 10, column: 11 },
+              start: { offset: 211, line: 11, column: 3 },
+              end: { offset: 219, line: 11, column: 11 },
             },
           },
           value: { kind: "literal", value: "mongodb" },
           comment: null,
           location: {
-            start: { offset: 181, line: 10, column: 3 },
-            end: { offset: 201, line: 10, column: 23 },
+            start: { offset: 211, line: 11, column: 3 },
+            end: { offset: 231, line: 11, column: 23 },
           },
         },
         {
@@ -116,8 +138,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "url",
             location: {
-              start: { offset: 204, line: 11, column: 3 },
-              end: { offset: 207, line: 11, column: 6 },
+              start: { offset: 234, line: 12, column: 3 },
+              end: { offset: 237, line: 12, column: 6 },
             },
           },
           value: {
@@ -126,22 +148,22 @@ const ast: PrismaSchema = {
               kind: "path",
               value: ["env"],
               location: {
-                start: { offset: 215, line: 11, column: 14 },
-                end: { offset: 218, line: 11, column: 17 },
+                start: { offset: 245, line: 12, column: 14 },
+                end: { offset: 248, line: 12, column: 17 },
               },
             },
             args: [{ kind: "literal", value: "DATABASE_URL" }],
           },
           comment: null,
           location: {
-            start: { offset: 204, line: 11, column: 3 },
-            end: { offset: 234, line: 11, column: 33 },
+            start: { offset: 234, line: 12, column: 3 },
+            end: { offset: 264, line: 12, column: 33 },
           },
         },
       ],
       location: {
-        start: { offset: 155, line: 9, column: 1 },
-        end: { offset: 236, line: 12, column: 2 },
+        start: { offset: 185, line: 10, column: 1 },
+        end: { offset: 266, line: 13, column: 2 },
       },
     },
     {
@@ -150,8 +172,8 @@ const ast: PrismaSchema = {
         kind: "name",
         value: "MyEnum",
         location: {
-          start: { offset: 243, line: 14, column: 6 },
-          end: { offset: 249, line: 14, column: 12 },
+          start: { offset: 273, line: 15, column: 6 },
+          end: { offset: 279, line: 15, column: 12 },
         },
       },
       members: [
@@ -161,8 +183,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "FirstValue",
             location: {
-              start: { offset: 254, line: 15, column: 3 },
-              end: { offset: 264, line: 15, column: 13 },
+              start: { offset: 284, line: 16, column: 3 },
+              end: { offset: 294, line: 16, column: 13 },
             },
           },
           attributes: [
@@ -172,14 +194,14 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["map"],
                 location: {
-                  start: { offset: 267, line: 15, column: 16 },
-                  end: { offset: 270, line: 15, column: 19 },
+                  start: { offset: 297, line: 16, column: 16 },
+                  end: { offset: 300, line: 16, column: 19 },
                 },
               },
               args: [{ kind: "literal", value: "v1" }],
               location: {
-                start: { offset: 266, line: 15, column: 15 },
-                end: { offset: 276, line: 15, column: 25 },
+                start: { offset: 296, line: 16, column: 15 },
+                end: { offset: 306, line: 16, column: 25 },
               },
             },
           ],
@@ -187,13 +209,13 @@ const ast: PrismaSchema = {
             kind: "comment",
             text: "Enum value comment",
             location: {
-              start: { offset: 277, line: 15, column: 26 },
-              end: { offset: 298, line: 15, column: 47 },
+              start: { offset: 307, line: 16, column: 26 },
+              end: { offset: 328, line: 16, column: 47 },
             },
           },
           location: {
-            start: { offset: 254, line: 15, column: 3 },
-            end: { offset: 298, line: 15, column: 47 },
+            start: { offset: 284, line: 16, column: 3 },
+            end: { offset: 328, line: 16, column: 47 },
           },
         },
         {
@@ -202,15 +224,15 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "SecondValue",
             location: {
-              start: { offset: 301, line: 16, column: 3 },
-              end: { offset: 312, line: 16, column: 14 },
+              start: { offset: 331, line: 17, column: 3 },
+              end: { offset: 342, line: 17, column: 14 },
             },
           },
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 301, line: 16, column: 3 },
-            end: { offset: 312, line: 16, column: 14 },
+            start: { offset: 331, line: 17, column: 3 },
+            end: { offset: 342, line: 17, column: 14 },
           },
         },
         {
@@ -219,21 +241,21 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "ThirdValue",
             location: {
-              start: { offset: 315, line: 17, column: 3 },
-              end: { offset: 325, line: 17, column: 13 },
+              start: { offset: 345, line: 18, column: 3 },
+              end: { offset: 355, line: 18, column: 13 },
             },
           },
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 315, line: 17, column: 3 },
-            end: { offset: 325, line: 17, column: 13 },
+            start: { offset: 345, line: 18, column: 3 },
+            end: { offset: 355, line: 18, column: 13 },
           },
         },
       ],
       location: {
-        start: { offset: 238, line: 14, column: 1 },
-        end: { offset: 327, line: 18, column: 2 },
+        start: { offset: 268, line: 15, column: 1 },
+        end: { offset: 357, line: 19, column: 2 },
       },
     },
     {
@@ -242,8 +264,8 @@ const ast: PrismaSchema = {
         kind: "name",
         value: "MyModel",
         location: {
-          start: { offset: 335, line: 20, column: 7 },
-          end: { offset: 342, line: 20, column: 14 },
+          start: { offset: 365, line: 21, column: 7 },
+          end: { offset: 372, line: 21, column: 14 },
         },
       },
       members: [
@@ -253,8 +275,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "id",
             location: {
-              start: { offset: 347, line: 21, column: 3 },
-              end: { offset: 349, line: 21, column: 5 },
+              start: { offset: 377, line: 22, column: 3 },
+              end: { offset: 379, line: 22, column: 5 },
             },
           },
           type: {
@@ -263,8 +285,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "String",
               location: {
-                start: { offset: 357, line: 21, column: 13 },
-                end: { offset: 363, line: 21, column: 19 },
+                start: { offset: 387, line: 22, column: 13 },
+                end: { offset: 393, line: 22, column: 19 },
               },
             },
           },
@@ -275,14 +297,14 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["id"],
                 location: {
-                  start: { offset: 367, line: 21, column: 23 },
-                  end: { offset: 370, line: 21, column: 26 },
+                  start: { offset: 397, line: 22, column: 23 },
+                  end: { offset: 400, line: 22, column: 26 },
                 },
               },
               args: [],
               location: {
-                start: { offset: 366, line: 21, column: 22 },
-                end: { offset: 370, line: 21, column: 26 },
+                start: { offset: 396, line: 22, column: 22 },
+                end: { offset: 400, line: 22, column: 26 },
               },
             },
             {
@@ -291,8 +313,8 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["default"],
                 location: {
-                  start: { offset: 371, line: 21, column: 27 },
-                  end: { offset: 378, line: 21, column: 34 },
+                  start: { offset: 401, line: 22, column: 27 },
+                  end: { offset: 408, line: 22, column: 34 },
                 },
               },
               args: [
@@ -302,16 +324,16 @@ const ast: PrismaSchema = {
                     kind: "path",
                     value: ["uuid"],
                     location: {
-                      start: { offset: 379, line: 21, column: 35 },
-                      end: { offset: 383, line: 21, column: 39 },
+                      start: { offset: 409, line: 22, column: 35 },
+                      end: { offset: 413, line: 22, column: 39 },
                     },
                   },
                   args: [],
                 },
               ],
               location: {
-                start: { offset: 370, line: 21, column: 26 },
-                end: { offset: 386, line: 21, column: 42 },
+                start: { offset: 400, line: 22, column: 26 },
+                end: { offset: 416, line: 22, column: 42 },
               },
             },
             {
@@ -320,14 +342,14 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["map"],
                 location: {
-                  start: { offset: 388, line: 21, column: 44 },
-                  end: { offset: 391, line: 21, column: 47 },
+                  start: { offset: 418, line: 22, column: 44 },
+                  end: { offset: 421, line: 22, column: 47 },
                 },
               },
               args: [{ kind: "literal", value: "_id" }],
               location: {
-                start: { offset: 387, line: 21, column: 43 },
-                end: { offset: 398, line: 21, column: 54 },
+                start: { offset: 417, line: 22, column: 43 },
+                end: { offset: 428, line: 22, column: 54 },
               },
             },
           ],
@@ -335,13 +357,13 @@ const ast: PrismaSchema = {
             kind: "comment",
             text: "Field comment",
             location: {
-              start: { offset: 399, line: 21, column: 55 },
-              end: { offset: 415, line: 21, column: 71 },
+              start: { offset: 429, line: 22, column: 55 },
+              end: { offset: 445, line: 22, column: 71 },
             },
           },
           location: {
-            start: { offset: 347, line: 21, column: 3 },
-            end: { offset: 415, line: 21, column: 71 },
+            start: { offset: 377, line: 22, column: 3 },
+            end: { offset: 445, line: 22, column: 71 },
           },
         },
         {
@@ -350,8 +372,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "type",
             location: {
-              start: { offset: 418, line: 22, column: 3 },
-              end: { offset: 422, line: 22, column: 7 },
+              start: { offset: 448, line: 23, column: 3 },
+              end: { offset: 452, line: 23, column: 7 },
             },
           },
           type: {
@@ -362,8 +384,8 @@ const ast: PrismaSchema = {
                 kind: "name",
                 value: "MyEnum",
                 location: {
-                  start: { offset: 428, line: 22, column: 13 },
-                  end: { offset: 434, line: 22, column: 19 },
+                  start: { offset: 458, line: 23, column: 13 },
+                  end: { offset: 464, line: 23, column: 19 },
                 },
               },
             },
@@ -371,8 +393,8 @@ const ast: PrismaSchema = {
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 418, line: 22, column: 3 },
-            end: { offset: 435, line: 22, column: 20 },
+            start: { offset: 448, line: 23, column: 3 },
+            end: { offset: 465, line: 23, column: 20 },
           },
         },
         {
@@ -381,8 +403,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "version",
             location: {
-              start: { offset: 438, line: 23, column: 3 },
-              end: { offset: 445, line: 23, column: 10 },
+              start: { offset: 468, line: 24, column: 3 },
+              end: { offset: 475, line: 24, column: 10 },
             },
           },
           type: {
@@ -391,8 +413,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "Int",
               location: {
-                start: { offset: 448, line: 23, column: 13 },
-                end: { offset: 451, line: 23, column: 16 },
+                start: { offset: 478, line: 24, column: 13 },
+                end: { offset: 481, line: 24, column: 16 },
               },
             },
           },
@@ -403,21 +425,21 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["default"],
                 location: {
-                  start: { offset: 458, line: 23, column: 23 },
-                  end: { offset: 465, line: 23, column: 30 },
+                  start: { offset: 488, line: 24, column: 23 },
+                  end: { offset: 495, line: 24, column: 30 },
                 },
               },
               args: [{ kind: "literal", value: 0 }],
               location: {
-                start: { offset: 457, line: 23, column: 22 },
-                end: { offset: 468, line: 23, column: 33 },
+                start: { offset: 487, line: 24, column: 22 },
+                end: { offset: 498, line: 24, column: 33 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 438, line: 23, column: 3 },
-            end: { offset: 468, line: 23, column: 33 },
+            start: { offset: 468, line: 24, column: 3 },
+            end: { offset: 498, line: 24, column: 33 },
           },
         },
         {
@@ -426,8 +448,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "uniqueKey",
             location: {
-              start: { offset: 471, line: 24, column: 3 },
-              end: { offset: 480, line: 24, column: 12 },
+              start: { offset: 501, line: 25, column: 3 },
+              end: { offset: 510, line: 25, column: 12 },
             },
           },
           type: {
@@ -436,8 +458,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "String",
               location: {
-                start: { offset: 481, line: 24, column: 13 },
-                end: { offset: 487, line: 24, column: 19 },
+                start: { offset: 511, line: 25, column: 13 },
+                end: { offset: 517, line: 25, column: 19 },
               },
             },
           },
@@ -448,8 +470,8 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["unique"],
                 location: {
-                  start: { offset: 491, line: 24, column: 23 },
-                  end: { offset: 497, line: 24, column: 29 },
+                  start: { offset: 521, line: 25, column: 23 },
+                  end: { offset: 527, line: 25, column: 29 },
                 },
               },
               args: [
@@ -459,23 +481,23 @@ const ast: PrismaSchema = {
                     kind: "name",
                     value: "sort",
                     location: {
-                      start: { offset: 498, line: 24, column: 30 },
-                      end: { offset: 502, line: 24, column: 34 },
+                      start: { offset: 528, line: 25, column: 30 },
+                      end: { offset: 532, line: 25, column: 34 },
                     },
                   },
                   expression: {
                     kind: "path",
                     value: ["Asc"],
                     location: {
-                      start: { offset: 504, line: 24, column: 36 },
-                      end: { offset: 507, line: 24, column: 39 },
+                      start: { offset: 534, line: 25, column: 36 },
+                      end: { offset: 537, line: 25, column: 39 },
                     },
                   },
                 },
               ],
               location: {
-                start: { offset: 490, line: 24, column: 22 },
-                end: { offset: 508, line: 24, column: 40 },
+                start: { offset: 520, line: 25, column: 22 },
+                end: { offset: 538, line: 25, column: 40 },
               },
             },
             {
@@ -484,21 +506,21 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["map"],
                 location: {
-                  start: { offset: 510, line: 24, column: 42 },
-                  end: { offset: 513, line: 24, column: 45 },
+                  start: { offset: 540, line: 25, column: 42 },
+                  end: { offset: 543, line: 25, column: 45 },
                 },
               },
               args: [{ kind: "literal", value: "unique_key" }],
               location: {
-                start: { offset: 509, line: 24, column: 41 },
-                end: { offset: 527, line: 24, column: 59 },
+                start: { offset: 539, line: 25, column: 41 },
+                end: { offset: 557, line: 25, column: 59 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 471, line: 24, column: 3 },
-            end: { offset: 527, line: 24, column: 59 },
+            start: { offset: 501, line: 25, column: 3 },
+            end: { offset: 557, line: 25, column: 59 },
           },
         },
         {
@@ -507,8 +529,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "createdAt",
             location: {
-              start: { offset: 530, line: 25, column: 3 },
-              end: { offset: 539, line: 25, column: 12 },
+              start: { offset: 560, line: 26, column: 3 },
+              end: { offset: 569, line: 26, column: 12 },
             },
           },
           type: {
@@ -517,8 +539,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "DateTime",
               location: {
-                start: { offset: 540, line: 25, column: 13 },
-                end: { offset: 548, line: 25, column: 21 },
+                start: { offset: 570, line: 26, column: 13 },
+                end: { offset: 578, line: 26, column: 21 },
               },
             },
           },
@@ -529,8 +551,8 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["default"],
                 location: {
-                  start: { offset: 550, line: 25, column: 23 },
-                  end: { offset: 557, line: 25, column: 30 },
+                  start: { offset: 580, line: 26, column: 23 },
+                  end: { offset: 587, line: 26, column: 30 },
                 },
               },
               args: [
@@ -540,16 +562,16 @@ const ast: PrismaSchema = {
                     kind: "path",
                     value: ["now"],
                     location: {
-                      start: { offset: 558, line: 25, column: 31 },
-                      end: { offset: 561, line: 25, column: 34 },
+                      start: { offset: 588, line: 26, column: 31 },
+                      end: { offset: 591, line: 26, column: 34 },
                     },
                   },
                   args: [],
                 },
               ],
               location: {
-                start: { offset: 549, line: 25, column: 22 },
-                end: { offset: 564, line: 25, column: 37 },
+                start: { offset: 579, line: 26, column: 22 },
+                end: { offset: 594, line: 26, column: 37 },
               },
             },
             {
@@ -558,21 +580,21 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["map"],
                 location: {
-                  start: { offset: 566, line: 25, column: 39 },
-                  end: { offset: 569, line: 25, column: 42 },
+                  start: { offset: 596, line: 26, column: 39 },
+                  end: { offset: 599, line: 26, column: 42 },
                 },
               },
               args: [{ kind: "literal", value: "created_at" }],
               location: {
-                start: { offset: 565, line: 25, column: 38 },
-                end: { offset: 583, line: 25, column: 56 },
+                start: { offset: 595, line: 26, column: 38 },
+                end: { offset: 613, line: 26, column: 56 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 530, line: 25, column: 3 },
-            end: { offset: 583, line: 25, column: 56 },
+            start: { offset: 560, line: 26, column: 3 },
+            end: { offset: 613, line: 26, column: 56 },
           },
         },
         {
@@ -581,8 +603,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "updatedAt",
             location: {
-              start: { offset: 586, line: 26, column: 3 },
-              end: { offset: 595, line: 26, column: 12 },
+              start: { offset: 616, line: 27, column: 3 },
+              end: { offset: 625, line: 27, column: 12 },
             },
           },
           type: {
@@ -591,8 +613,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "DateTime",
               location: {
-                start: { offset: 596, line: 26, column: 13 },
-                end: { offset: 604, line: 26, column: 21 },
+                start: { offset: 626, line: 27, column: 13 },
+                end: { offset: 634, line: 27, column: 21 },
               },
             },
           },
@@ -603,8 +625,8 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["default"],
                 location: {
-                  start: { offset: 606, line: 26, column: 23 },
-                  end: { offset: 613, line: 26, column: 30 },
+                  start: { offset: 636, line: 27, column: 23 },
+                  end: { offset: 643, line: 27, column: 30 },
                 },
               },
               args: [
@@ -614,16 +636,16 @@ const ast: PrismaSchema = {
                     kind: "path",
                     value: ["now"],
                     location: {
-                      start: { offset: 614, line: 26, column: 31 },
-                      end: { offset: 617, line: 26, column: 34 },
+                      start: { offset: 644, line: 27, column: 31 },
+                      end: { offset: 647, line: 27, column: 34 },
                     },
                   },
                   args: [],
                 },
               ],
               location: {
-                start: { offset: 605, line: 26, column: 22 },
-                end: { offset: 620, line: 26, column: 37 },
+                start: { offset: 635, line: 27, column: 22 },
+                end: { offset: 650, line: 27, column: 37 },
               },
             },
             {
@@ -632,14 +654,14 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["updatedAt"],
                 location: {
-                  start: { offset: 622, line: 26, column: 39 },
-                  end: { offset: 632, line: 26, column: 49 },
+                  start: { offset: 652, line: 27, column: 39 },
+                  end: { offset: 662, line: 27, column: 49 },
                 },
               },
               args: [],
               location: {
-                start: { offset: 621, line: 26, column: 38 },
-                end: { offset: 632, line: 26, column: 49 },
+                start: { offset: 651, line: 27, column: 38 },
+                end: { offset: 662, line: 27, column: 49 },
               },
             },
             {
@@ -648,21 +670,21 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["map"],
                 location: {
-                  start: { offset: 633, line: 26, column: 50 },
-                  end: { offset: 636, line: 26, column: 53 },
+                  start: { offset: 663, line: 27, column: 50 },
+                  end: { offset: 666, line: 27, column: 53 },
                 },
               },
               args: [{ kind: "literal", value: "updated_at" }],
               location: {
-                start: { offset: 632, line: 26, column: 49 },
-                end: { offset: 650, line: 26, column: 67 },
+                start: { offset: 662, line: 27, column: 49 },
+                end: { offset: 680, line: 27, column: 67 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 586, line: 26, column: 3 },
-            end: { offset: 650, line: 26, column: 67 },
+            start: { offset: 616, line: 27, column: 3 },
+            end: { offset: 680, line: 27, column: 67 },
           },
         },
         {
@@ -671,8 +693,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "children",
             location: {
-              start: { offset: 654, line: 28, column: 3 },
-              end: { offset: 662, line: 28, column: 11 },
+              start: { offset: 684, line: 29, column: 3 },
+              end: { offset: 692, line: 29, column: 11 },
             },
           },
           type: {
@@ -683,8 +705,8 @@ const ast: PrismaSchema = {
                 kind: "name",
                 value: "MyOtherModel",
                 location: {
-                  start: { offset: 663, line: 28, column: 12 },
-                  end: { offset: 675, line: 28, column: 24 },
+                  start: { offset: 693, line: 29, column: 12 },
+                  end: { offset: 705, line: 29, column: 24 },
                 },
               },
             },
@@ -692,8 +714,8 @@ const ast: PrismaSchema = {
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 654, line: 28, column: 3 },
-            end: { offset: 677, line: 28, column: 26 },
+            start: { offset: 684, line: 29, column: 3 },
+            end: { offset: 707, line: 29, column: 26 },
           },
         },
         {
@@ -702,8 +724,8 @@ const ast: PrismaSchema = {
             kind: "path",
             value: ["unique"],
             location: {
-              start: { offset: 683, line: 30, column: 5 },
-              end: { offset: 689, line: 30, column: 11 },
+              start: { offset: 713, line: 31, column: 5 },
+              end: { offset: 719, line: 31, column: 11 },
             },
           },
           args: [
@@ -714,16 +736,16 @@ const ast: PrismaSchema = {
                   kind: "path",
                   value: ["type"],
                   location: {
-                    start: { offset: 691, line: 30, column: 13 },
-                    end: { offset: 695, line: 30, column: 17 },
+                    start: { offset: 721, line: 31, column: 13 },
+                    end: { offset: 725, line: 31, column: 17 },
                   },
                 },
                 {
                   kind: "path",
                   value: ["version"],
                   location: {
-                    start: { offset: 697, line: 30, column: 19 },
-                    end: { offset: 704, line: 30, column: 26 },
+                    start: { offset: 727, line: 31, column: 19 },
+                    end: { offset: 734, line: 31, column: 26 },
                   },
                 },
               ],
@@ -733,13 +755,13 @@ const ast: PrismaSchema = {
             kind: "comment",
             text: "Block attribute comment",
             location: {
-              start: { offset: 707, line: 30, column: 29 },
-              end: { offset: 733, line: 30, column: 55 },
+              start: { offset: 737, line: 31, column: 29 },
+              end: { offset: 763, line: 31, column: 55 },
             },
           },
           location: {
-            start: { offset: 681, line: 30, column: 3 },
-            end: { offset: 733, line: 30, column: 55 },
+            start: { offset: 711, line: 31, column: 3 },
+            end: { offset: 763, line: 31, column: 55 },
           },
         },
         {
@@ -748,8 +770,8 @@ const ast: PrismaSchema = {
             kind: "path",
             value: ["index"],
             location: {
-              start: { offset: 738, line: 31, column: 5 },
-              end: { offset: 743, line: 31, column: 10 },
+              start: { offset: 768, line: 32, column: 5 },
+              end: { offset: 773, line: 32, column: 10 },
             },
           },
           args: [
@@ -762,8 +784,8 @@ const ast: PrismaSchema = {
                     kind: "path",
                     value: ["createdAt"],
                     location: {
-                      start: { offset: 745, line: 31, column: 12 },
-                      end: { offset: 754, line: 31, column: 21 },
+                      start: { offset: 775, line: 32, column: 12 },
+                      end: { offset: 784, line: 32, column: 21 },
                     },
                   },
                   args: [
@@ -773,16 +795,16 @@ const ast: PrismaSchema = {
                         kind: "name",
                         value: "sort",
                         location: {
-                          start: { offset: 755, line: 31, column: 22 },
-                          end: { offset: 759, line: 31, column: 26 },
+                          start: { offset: 785, line: 32, column: 22 },
+                          end: { offset: 789, line: 32, column: 26 },
                         },
                       },
                       expression: {
                         kind: "path",
                         value: ["Desc"],
                         location: {
-                          start: { offset: 761, line: 31, column: 28 },
-                          end: { offset: 765, line: 31, column: 32 },
+                          start: { offset: 791, line: 32, column: 28 },
+                          end: { offset: 795, line: 32, column: 32 },
                         },
                       },
                     },
@@ -792,8 +814,8 @@ const ast: PrismaSchema = {
                         kind: "name",
                         value: "ops",
                         location: {
-                          start: { offset: 767, line: 31, column: 34 },
-                          end: { offset: 770, line: 31, column: 37 },
+                          start: { offset: 797, line: 32, column: 34 },
+                          end: { offset: 800, line: 32, column: 37 },
                         },
                       },
                       expression: {
@@ -802,8 +824,8 @@ const ast: PrismaSchema = {
                           kind: "path",
                           value: ["raw"],
                           location: {
-                            start: { offset: 772, line: 31, column: 39 },
-                            end: { offset: 775, line: 31, column: 42 },
+                            start: { offset: 802, line: 32, column: 39 },
+                            end: { offset: 805, line: 32, column: 42 },
                           },
                         },
                         args: [{ kind: "literal", value: "other" }],
@@ -819,24 +841,24 @@ const ast: PrismaSchema = {
                 kind: "name",
                 value: "type",
                 location: {
-                  start: { offset: 788, line: 31, column: 55 },
-                  end: { offset: 792, line: 31, column: 59 },
+                  start: { offset: 818, line: 32, column: 55 },
+                  end: { offset: 822, line: 32, column: 59 },
                 },
               },
               expression: {
                 kind: "path",
                 value: ["BTree"],
                 location: {
-                  start: { offset: 794, line: 31, column: 61 },
-                  end: { offset: 799, line: 31, column: 66 },
+                  start: { offset: 824, line: 32, column: 61 },
+                  end: { offset: 829, line: 32, column: 66 },
                 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 736, line: 31, column: 3 },
-            end: { offset: 800, line: 31, column: 67 },
+            start: { offset: 766, line: 32, column: 3 },
+            end: { offset: 830, line: 32, column: 67 },
           },
         },
         {
@@ -845,21 +867,21 @@ const ast: PrismaSchema = {
             kind: "path",
             value: ["map"],
             location: {
-              start: { offset: 805, line: 32, column: 5 },
-              end: { offset: 808, line: 32, column: 8 },
+              start: { offset: 835, line: 33, column: 5 },
+              end: { offset: 838, line: 33, column: 8 },
             },
           },
           args: [{ kind: "literal", value: "my_model" }],
           comment: null,
           location: {
-            start: { offset: 803, line: 32, column: 3 },
-            end: { offset: 820, line: 32, column: 20 },
+            start: { offset: 833, line: 33, column: 3 },
+            end: { offset: 850, line: 33, column: 20 },
           },
         },
       ],
       location: {
-        start: { offset: 329, line: 20, column: 1 },
-        end: { offset: 822, line: 33, column: 2 },
+        start: { offset: 359, line: 21, column: 1 },
+        end: { offset: 852, line: 34, column: 2 },
       },
     },
     {
@@ -868,8 +890,8 @@ const ast: PrismaSchema = {
         kind: "name",
         value: "MyType",
         location: {
-          start: { offset: 829, line: 35, column: 6 },
-          end: { offset: 835, line: 35, column: 12 },
+          start: { offset: 859, line: 36, column: 6 },
+          end: { offset: 865, line: 36, column: 12 },
         },
       },
       members: [
@@ -879,8 +901,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "field1",
             location: {
-              start: { offset: 840, line: 36, column: 3 },
-              end: { offset: 846, line: 36, column: 9 },
+              start: { offset: 870, line: 37, column: 3 },
+              end: { offset: 876, line: 37, column: 9 },
             },
           },
           type: {
@@ -889,16 +911,16 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "Float",
               location: {
-                start: { offset: 847, line: 36, column: 10 },
-                end: { offset: 852, line: 36, column: 15 },
+                start: { offset: 877, line: 37, column: 10 },
+                end: { offset: 882, line: 37, column: 15 },
               },
             },
           },
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 840, line: 36, column: 3 },
-            end: { offset: 852, line: 36, column: 15 },
+            start: { offset: 870, line: 37, column: 3 },
+            end: { offset: 882, line: 37, column: 15 },
           },
         },
         {
@@ -907,8 +929,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "field2",
             location: {
-              start: { offset: 855, line: 37, column: 3 },
-              end: { offset: 861, line: 37, column: 9 },
+              start: { offset: 885, line: 38, column: 3 },
+              end: { offset: 891, line: 38, column: 9 },
             },
           },
           type: {
@@ -917,8 +939,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "Boolean",
               location: {
-                start: { offset: 862, line: 37, column: 10 },
-                end: { offset: 869, line: 37, column: 17 },
+                start: { offset: 892, line: 38, column: 10 },
+                end: { offset: 899, line: 38, column: 17 },
               },
             },
           },
@@ -929,21 +951,21 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["default"],
                 location: {
-                  start: { offset: 883, line: 37, column: 31 },
-                  end: { offset: 890, line: 37, column: 38 },
+                  start: { offset: 913, line: 38, column: 31 },
+                  end: { offset: 920, line: 38, column: 38 },
                 },
               },
               args: [{ kind: "literal", value: true }],
               location: {
-                start: { offset: 882, line: 37, column: 30 },
-                end: { offset: 896, line: 37, column: 44 },
+                start: { offset: 912, line: 38, column: 30 },
+                end: { offset: 926, line: 38, column: 44 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 855, line: 37, column: 3 },
-            end: { offset: 896, line: 37, column: 44 },
+            start: { offset: 885, line: 38, column: 3 },
+            end: { offset: 926, line: 38, column: 44 },
           },
         },
         {
@@ -952,8 +974,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "field3",
             location: {
-              start: { offset: 899, line: 38, column: 3 },
-              end: { offset: 905, line: 38, column: 9 },
+              start: { offset: 929, line: 39, column: 3 },
+              end: { offset: 935, line: 39, column: 9 },
             },
           },
           type: {
@@ -962,16 +984,16 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "Json",
               location: {
-                start: { offset: 906, line: 38, column: 10 },
-                end: { offset: 910, line: 38, column: 14 },
+                start: { offset: 936, line: 39, column: 10 },
+                end: { offset: 940, line: 39, column: 14 },
               },
             },
           },
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 899, line: 38, column: 3 },
-            end: { offset: 910, line: 38, column: 14 },
+            start: { offset: 929, line: 39, column: 3 },
+            end: { offset: 940, line: 39, column: 14 },
           },
         },
         {
@@ -980,8 +1002,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "field4",
             location: {
-              start: { offset: 913, line: 39, column: 3 },
-              end: { offset: 919, line: 39, column: 9 },
+              start: { offset: 943, line: 40, column: 3 },
+              end: { offset: 949, line: 40, column: 9 },
             },
           },
           type: {
@@ -991,14 +1013,14 @@ const ast: PrismaSchema = {
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 913, line: 39, column: 3 },
-            end: { offset: 939, line: 39, column: 29 },
+            start: { offset: 943, line: 40, column: 3 },
+            end: { offset: 969, line: 40, column: 29 },
           },
         },
       ],
       location: {
-        start: { offset: 824, line: 35, column: 1 },
-        end: { offset: 941, line: 40, column: 2 },
+        start: { offset: 854, line: 36, column: 1 },
+        end: { offset: 971, line: 41, column: 2 },
       },
     },
     {
@@ -1007,8 +1029,8 @@ const ast: PrismaSchema = {
         kind: "name",
         value: "MyOtherModel",
         location: {
-          start: { offset: 949, line: 42, column: 7 },
-          end: { offset: 961, line: 42, column: 19 },
+          start: { offset: 979, line: 43, column: 7 },
+          end: { offset: 991, line: 43, column: 19 },
         },
       },
       members: [
@@ -1018,8 +1040,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "id",
             location: {
-              start: { offset: 966, line: 43, column: 3 },
-              end: { offset: 968, line: 43, column: 5 },
+              start: { offset: 996, line: 44, column: 3 },
+              end: { offset: 998, line: 44, column: 5 },
             },
           },
           type: {
@@ -1028,8 +1050,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "String",
               location: {
-                start: { offset: 975, line: 43, column: 12 },
-                end: { offset: 981, line: 43, column: 18 },
+                start: { offset: 1005, line: 44, column: 12 },
+                end: { offset: 1011, line: 44, column: 18 },
               },
             },
           },
@@ -1040,14 +1062,14 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["id"],
                 location: {
-                  start: { offset: 983, line: 43, column: 20 },
-                  end: { offset: 986, line: 43, column: 23 },
+                  start: { offset: 1013, line: 44, column: 20 },
+                  end: { offset: 1016, line: 44, column: 23 },
                 },
               },
               args: [],
               location: {
-                start: { offset: 982, line: 43, column: 19 },
-                end: { offset: 986, line: 43, column: 23 },
+                start: { offset: 1012, line: 44, column: 19 },
+                end: { offset: 1016, line: 44, column: 23 },
               },
             },
             {
@@ -1056,8 +1078,8 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["default"],
                 location: {
-                  start: { offset: 987, line: 43, column: 24 },
-                  end: { offset: 994, line: 43, column: 31 },
+                  start: { offset: 1017, line: 44, column: 24 },
+                  end: { offset: 1024, line: 44, column: 31 },
                 },
               },
               args: [
@@ -1067,16 +1089,16 @@ const ast: PrismaSchema = {
                     kind: "path",
                     value: ["uuid"],
                     location: {
-                      start: { offset: 995, line: 43, column: 32 },
-                      end: { offset: 999, line: 43, column: 36 },
+                      start: { offset: 1025, line: 44, column: 32 },
+                      end: { offset: 1029, line: 44, column: 36 },
                     },
                   },
                   args: [],
                 },
               ],
               location: {
-                start: { offset: 986, line: 43, column: 23 },
-                end: { offset: 1002, line: 43, column: 39 },
+                start: { offset: 1016, line: 44, column: 23 },
+                end: { offset: 1032, line: 44, column: 39 },
               },
             },
             {
@@ -1085,21 +1107,21 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["map"],
                 location: {
-                  start: { offset: 1004, line: 43, column: 41 },
-                  end: { offset: 1007, line: 43, column: 44 },
+                  start: { offset: 1034, line: 44, column: 41 },
+                  end: { offset: 1037, line: 44, column: 44 },
                 },
               },
               args: [{ kind: "literal", value: "_id" }],
               location: {
-                start: { offset: 1003, line: 43, column: 40 },
-                end: { offset: 1014, line: 43, column: 51 },
+                start: { offset: 1033, line: 44, column: 40 },
+                end: { offset: 1044, line: 44, column: 51 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 966, line: 43, column: 3 },
-            end: { offset: 1014, line: 43, column: 51 },
+            start: { offset: 996, line: 44, column: 3 },
+            end: { offset: 1044, line: 44, column: 51 },
           },
         },
         {
@@ -1108,8 +1130,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "parentId",
             location: {
-              start: { offset: 1017, line: 44, column: 3 },
-              end: { offset: 1025, line: 44, column: 11 },
+              start: { offset: 1047, line: 45, column: 3 },
+              end: { offset: 1055, line: 45, column: 11 },
             },
           },
           type: {
@@ -1118,16 +1140,16 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "String",
               location: {
-                start: { offset: 1026, line: 44, column: 12 },
-                end: { offset: 1032, line: 44, column: 18 },
+                start: { offset: 1056, line: 45, column: 12 },
+                end: { offset: 1062, line: 45, column: 18 },
               },
             },
           },
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 1017, line: 44, column: 3 },
-            end: { offset: 1032, line: 44, column: 18 },
+            start: { offset: 1047, line: 45, column: 3 },
+            end: { offset: 1062, line: 45, column: 18 },
           },
         },
         {
@@ -1136,8 +1158,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "text",
             location: {
-              start: { offset: 1035, line: 45, column: 3 },
-              end: { offset: 1039, line: 45, column: 7 },
+              start: { offset: 1065, line: 46, column: 3 },
+              end: { offset: 1069, line: 46, column: 7 },
             },
           },
           type: {
@@ -1146,16 +1168,16 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "String",
               location: {
-                start: { offset: 1044, line: 45, column: 12 },
-                end: { offset: 1050, line: 45, column: 18 },
+                start: { offset: 1074, line: 46, column: 12 },
+                end: { offset: 1080, line: 46, column: 18 },
               },
             },
           },
           attributes: [],
           comment: null,
           location: {
-            start: { offset: 1035, line: 45, column: 3 },
-            end: { offset: 1050, line: 45, column: 18 },
+            start: { offset: 1065, line: 46, column: 3 },
+            end: { offset: 1080, line: 46, column: 18 },
           },
         },
         {
@@ -1164,8 +1186,8 @@ const ast: PrismaSchema = {
             kind: "name",
             value: "parent",
             location: {
-              start: { offset: 1054, line: 47, column: 3 },
-              end: { offset: 1060, line: 47, column: 9 },
+              start: { offset: 1084, line: 48, column: 3 },
+              end: { offset: 1090, line: 48, column: 9 },
             },
           },
           type: {
@@ -1174,8 +1196,8 @@ const ast: PrismaSchema = {
               kind: "name",
               value: "MyModel",
               location: {
-                start: { offset: 1061, line: 47, column: 10 },
-                end: { offset: 1068, line: 47, column: 17 },
+                start: { offset: 1091, line: 48, column: 10 },
+                end: { offset: 1098, line: 48, column: 17 },
               },
             },
           },
@@ -1186,8 +1208,8 @@ const ast: PrismaSchema = {
                 kind: "path",
                 value: ["relation"],
                 location: {
-                  start: { offset: 1070, line: 47, column: 19 },
-                  end: { offset: 1078, line: 47, column: 27 },
+                  start: { offset: 1100, line: 48, column: 19 },
+                  end: { offset: 1108, line: 48, column: 27 },
                 },
               },
               args: [
@@ -1197,8 +1219,8 @@ const ast: PrismaSchema = {
                     kind: "name",
                     value: "fields",
                     location: {
-                      start: { offset: 1079, line: 47, column: 28 },
-                      end: { offset: 1085, line: 47, column: 34 },
+                      start: { offset: 1109, line: 48, column: 28 },
+                      end: { offset: 1115, line: 48, column: 34 },
                     },
                   },
                   expression: {
@@ -1208,8 +1230,8 @@ const ast: PrismaSchema = {
                         kind: "path",
                         value: ["parentId"],
                         location: {
-                          start: { offset: 1088, line: 47, column: 37 },
-                          end: { offset: 1096, line: 47, column: 45 },
+                          start: { offset: 1118, line: 48, column: 37 },
+                          end: { offset: 1126, line: 48, column: 45 },
                         },
                       },
                     ],
@@ -1221,8 +1243,8 @@ const ast: PrismaSchema = {
                     kind: "name",
                     value: "references",
                     location: {
-                      start: { offset: 1099, line: 47, column: 48 },
-                      end: { offset: 1109, line: 47, column: 58 },
+                      start: { offset: 1129, line: 48, column: 48 },
+                      end: { offset: 1139, line: 48, column: 58 },
                     },
                   },
                   expression: {
@@ -1232,8 +1254,8 @@ const ast: PrismaSchema = {
                         kind: "path",
                         value: ["id"],
                         location: {
-                          start: { offset: 1112, line: 47, column: 61 },
-                          end: { offset: 1114, line: 47, column: 63 },
+                          start: { offset: 1142, line: 48, column: 61 },
+                          end: { offset: 1144, line: 48, column: 63 },
                         },
                       },
                     ],
@@ -1241,21 +1263,202 @@ const ast: PrismaSchema = {
                 },
               ],
               location: {
-                start: { offset: 1069, line: 47, column: 18 },
-                end: { offset: 1116, line: 47, column: 65 },
+                start: { offset: 1099, line: 48, column: 18 },
+                end: { offset: 1146, line: 48, column: 65 },
               },
             },
           ],
           comment: null,
           location: {
-            start: { offset: 1054, line: 47, column: 3 },
-            end: { offset: 1116, line: 47, column: 65 },
+            start: { offset: 1084, line: 48, column: 3 },
+            end: { offset: 1146, line: 48, column: 65 },
           },
         },
       ],
       location: {
-        start: { offset: 943, line: 42, column: 1 },
-        end: { offset: 1118, line: 48, column: 2 },
+        start: { offset: 973, line: 43, column: 1 },
+        end: { offset: 1148, line: 49, column: 2 },
+      },
+    },
+    {
+      kind: "view",
+      name: {
+        kind: "name",
+        value: "MyView",
+        location: {
+          start: { offset: 1155, line: 51, column: 6 },
+          end: { offset: 1161, line: 51, column: 12 },
+        },
+      },
+      members: [
+        {
+          kind: "field",
+          name: {
+            kind: "name",
+            value: "id",
+            location: {
+              start: { offset: 1166, line: 52, column: 3 },
+              end: { offset: 1168, line: 52, column: 5 },
+            },
+          },
+          type: {
+            kind: "typeId",
+            name: {
+              kind: "name",
+              value: "Int",
+              location: {
+                start: { offset: 1172, line: 52, column: 9 },
+                end: { offset: 1175, line: 52, column: 12 },
+              },
+            },
+          },
+          attributes: [
+            {
+              kind: "fieldAttribute",
+              path: {
+                kind: "path",
+                value: ["id"],
+                location: {
+                  start: { offset: 1180, line: 52, column: 17 },
+                  end: { offset: 1183, line: 52, column: 20 },
+                },
+              },
+              args: [],
+              location: {
+                start: { offset: 1179, line: 52, column: 16 },
+                end: { offset: 1183, line: 52, column: 20 },
+              },
+            },
+            {
+              kind: "fieldAttribute",
+              path: {
+                kind: "path",
+                value: ["map"],
+                location: {
+                  start: { offset: 1184, line: 52, column: 21 },
+                  end: { offset: 1187, line: 52, column: 24 },
+                },
+              },
+              args: [{ kind: "literal", value: "_id" }],
+              location: {
+                start: { offset: 1183, line: 52, column: 20 },
+                end: { offset: 1194, line: 52, column: 31 },
+              },
+            },
+          ],
+          comment: null,
+          location: {
+            start: { offset: 1166, line: 52, column: 3 },
+            end: { offset: 1194, line: 52, column: 31 },
+          },
+        },
+        {
+          kind: "field",
+          name: {
+            kind: "name",
+            value: "email",
+            location: {
+              start: { offset: 1197, line: 53, column: 3 },
+              end: { offset: 1202, line: 53, column: 8 },
+            },
+          },
+          type: {
+            kind: "typeId",
+            name: {
+              kind: "name",
+              value: "String",
+              location: {
+                start: { offset: 1203, line: 53, column: 9 },
+                end: { offset: 1209, line: 53, column: 15 },
+              },
+            },
+          },
+          attributes: [],
+          comment: null,
+          location: {
+            start: { offset: 1197, line: 53, column: 3 },
+            end: { offset: 1209, line: 53, column: 15 },
+          },
+        },
+        {
+          kind: "field",
+          name: {
+            kind: "name",
+            value: "name",
+            location: {
+              start: { offset: 1212, line: 54, column: 3 },
+              end: { offset: 1216, line: 54, column: 7 },
+            },
+          },
+          type: {
+            kind: "typeId",
+            name: {
+              kind: "name",
+              value: "String",
+              location: {
+                start: { offset: 1218, line: 54, column: 9 },
+                end: { offset: 1224, line: 54, column: 15 },
+              },
+            },
+          },
+          attributes: [],
+          comment: null,
+          location: {
+            start: { offset: 1212, line: 54, column: 3 },
+            end: { offset: 1224, line: 54, column: 15 },
+          },
+        },
+        {
+          kind: "field",
+          name: {
+            kind: "name",
+            value: "bio",
+            location: {
+              start: { offset: 1227, line: 55, column: 3 },
+              end: { offset: 1230, line: 55, column: 6 },
+            },
+          },
+          type: {
+            kind: "typeId",
+            name: {
+              kind: "name",
+              value: "String",
+              location: {
+                start: { offset: 1233, line: 55, column: 9 },
+                end: { offset: 1239, line: 55, column: 15 },
+              },
+            },
+          },
+          attributes: [],
+          comment: null,
+          location: {
+            start: { offset: 1227, line: 55, column: 3 },
+            end: { offset: 1239, line: 55, column: 15 },
+          },
+        },
+        {
+          kind: "blockAttribute",
+          path: {
+            kind: "path",
+            value: ["map"],
+            location: {
+              start: { offset: 1245, line: 57, column: 5 },
+              end: { offset: 1248, line: 57, column: 8 },
+            },
+          },
+          args: [
+            { kind: "literal", value: "my_view" },
+          ],
+          comment: null,
+          location: {
+            start: { offset: 1243, line: 57, column: 3 },
+            end: { offset: 1259, line: 57, column: 19 },
+          },
+        },
+      ],
+      location: {
+        start: { offset: 1150, line: 51, column: 1 },
+        end: { offset: 1261, line: 58, column: 2 },
       },
     },
   ],

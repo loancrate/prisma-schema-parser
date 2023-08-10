@@ -11,6 +11,9 @@ const formatReducer: PrismaAstReducer<string> = {
   type({ name, members }) {
     return `type ${name} {\n${members.join("\n")}\n}`;
   },
+  view({ name, members }) {
+    return `view ${name} {\n${members.join("\n")}\n}`;
+  },
   enum({ name, members }) {
     return `enum ${name} {\n${members.join("\n")}\n}`;
   },
