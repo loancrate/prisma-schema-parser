@@ -49,7 +49,7 @@ export interface IdFieldAttribute {
 }
 
 export function findIdFieldAttribute(
-  decl: FieldDeclaration
+  decl: FieldDeclaration,
 ): IdFieldAttribute | undefined {
   return parseUniqueAttributeWith(decl, "id", parseIdFieldAttribute);
 }
@@ -59,18 +59,18 @@ function parseIdFieldAttribute(attr: SchemaAttribute): IdFieldAttribute {
     map: applyOptional(findArgument(attr.args, "map"), readStringArgument),
     length: applyOptional(
       findArgument(attr.args, "length"),
-      readNumberArgument
+      readNumberArgument,
     ),
     sort: applyOptional(
       applyOptional(
         findArgument(attr.args, "sort"),
-        readFieldReferenceArgument
+        readFieldReferenceArgument,
       ),
-      asSortOrder
+      asSortOrder,
     ),
     clustered: applyOptional(
       findArgument(attr.args, "clustered"),
-      readBooleanArgument
+      readBooleanArgument,
     ),
   };
 }
@@ -92,14 +92,14 @@ function readFieldArgument(arg: SchemaArgument): IndexField {
       name: joinPath(expr.path.value),
       length: applyOptional(
         findArgument(expr.args, "length"),
-        readNumberArgument
+        readNumberArgument,
       ),
       sort: applyOptional(
         applyOptional(
           findArgument(expr.args, "sort"),
-          readFieldReferenceArgument
+          readFieldReferenceArgument,
         ),
-        asSortOrder
+        asSortOrder,
       ),
       ops: applyOptional(findArgument(expr.args, "ops"), readOpsArgument),
     };
@@ -123,7 +123,7 @@ export interface IdBlockAttribute {
 }
 
 export function findIdBlockAttribute(
-  decl: ModelDeclaration
+  decl: ModelDeclaration,
 ): IdBlockAttribute | undefined {
   return parseUniqueAttributeWith(decl, "id", parseIdBlockAttribute);
 }
@@ -135,7 +135,7 @@ function parseIdBlockAttribute(attr: SchemaAttribute): IdBlockAttribute {
     map: applyOptional(findArgument(attr.args, "map"), readStringArgument),
     clustered: applyOptional(
       findArgument(attr.args, "clustered"),
-      readBooleanArgument
+      readBooleanArgument,
     ),
   };
 }
@@ -146,7 +146,7 @@ export interface DefaultFieldAttribute {
 }
 
 export function findDefaultFieldAttribute(
-  decl: FieldDeclaration
+  decl: FieldDeclaration,
 ): DefaultFieldAttribute | undefined {
   return parseUniqueAttributeWith(decl, "default", (attr) => ({
     expression: getArgument(attr.args, "expression", 0).expression,
@@ -162,7 +162,7 @@ export interface UniqueFieldAttribute {
 }
 
 export function findUniqueFieldAttribute(
-  decl: FieldDeclaration
+  decl: FieldDeclaration,
 ): UniqueFieldAttribute | undefined {
   return parseUniqueAttributeWith(decl, "unique", parseIdFieldAttribute);
 }
@@ -175,7 +175,7 @@ export interface UniqueBlockAttribute {
 }
 
 export function findUniqueBlockAttributes(
-  decl: ModelDeclaration
+  decl: ModelDeclaration,
 ): UniqueBlockAttribute[] {
   return parseAttributesWith(decl, "unique", parseIdBlockAttribute);
 }
@@ -189,13 +189,13 @@ export interface IndexBlockAttribute {
 }
 
 export function findIndexBlockAttributes(
-  decl: ModelDeclaration
+  decl: ModelDeclaration,
 ): IndexBlockAttribute[] {
   return parseAttributesWith(decl, "index", (attr) => ({
     ...parseIdBlockAttribute(attr),
     type: applyOptional(
       findArgument(attr.args, "type"),
-      readFieldReferenceArgument
+      readFieldReferenceArgument,
     ),
   }));
 }
@@ -219,7 +219,7 @@ const referentialActions = [
   "SetDefault",
 ] as const;
 
-export type ReferentialAction = typeof referentialActions[number];
+export type ReferentialAction = (typeof referentialActions)[number];
 
 export function isReferentialAction(v: unknown): v is ReferentialAction {
   return referentialActions.some((a) => a === v);
@@ -241,31 +241,31 @@ export interface RelationFieldAttribute {
 }
 
 export function findRelationFieldAttribute(
-  decl: FieldDeclaration
+  decl: FieldDeclaration,
 ): RelationFieldAttribute | undefined {
   return parseUniqueAttributeWith(decl, "relation", (attr) => ({
     name: applyOptional(findArgument(attr.args, "name", 0), readStringArgument),
     fields: applyOptional(
       findArgument(attr.args, "fields"),
-      readFieldReferencesArgument
+      readFieldReferencesArgument,
     ),
     references: applyOptional(
       findArgument(attr.args, "references"),
-      readFieldReferencesArgument
+      readFieldReferencesArgument,
     ),
     onDelete: applyOptional(
       findArgument(attr.args, "onDelete"),
-      readReferentialActionArgument
+      readReferentialActionArgument,
     ),
     onUpdate: applyOptional(
       findArgument(attr.args, "onUpdate"),
-      readReferentialActionArgument
+      readReferentialActionArgument,
     ),
   }));
 }
 
 export function readReferentialActionArgument(
-  arg: SchemaArgument
+  arg: SchemaArgument,
 ): ReferentialAction {
   const expr = getArgumentExpression(arg);
   if (expr.kind === "path") {
@@ -279,7 +279,7 @@ export interface MapFieldAttribute {
 }
 
 export function findMapFieldAttribute(
-  decl: FieldDeclaration | EnumValue
+  decl: FieldDeclaration | EnumValue,
 ): MapFieldAttribute | undefined {
   return parseUniqueAttributeWith(decl, "map", parseMapAttribute);
 }
@@ -289,7 +289,7 @@ export interface MapBlockAttribute {
 }
 
 export function findMapBlockAttribute(
-  decl: ModelDeclaration | EnumDeclaration
+  decl: ModelDeclaration | EnumDeclaration,
 ): MapBlockAttribute | undefined {
   return parseUniqueAttributeWith(decl, "map", parseMapAttribute);
 }
@@ -303,7 +303,7 @@ function parseMapAttribute(attr: SchemaAttribute): MapFieldAttribute {
 function parseUniqueAttributeWith<T>(
   decl: ModelDeclaration | EnumDeclaration | FieldDeclaration | EnumValue,
   name: string,
-  parser: (attr: SchemaAttribute) => T
+  parser: (attr: SchemaAttribute) => T,
 ): T | undefined {
   const attrs = findAllAttributes(getDeclarationAttributes(decl), name);
   switch (attrs.length) {
@@ -321,7 +321,7 @@ function parseUniqueAttributeWith<T>(
 function parseAttributesWith<T>(
   decl: ModelDeclaration,
   name: string,
-  parser: (attr: SchemaAttribute) => T
+  parser: (attr: SchemaAttribute) => T,
 ): T[] {
   const attrs = findAllAttributes(getModelAttributes(decl), name);
   return attrs.map((attr) => parseAttributeWith(attr, decl, name, parser));
@@ -331,7 +331,7 @@ function parseAttributeWith<T>(
   attr: SchemaAttribute,
   decl: ModelDeclaration | EnumDeclaration | FieldDeclaration | EnumValue,
   name: string,
-  parser: (attr: SchemaAttribute) => T
+  parser: (attr: SchemaAttribute) => T,
 ): T {
   try {
     return parser(attr);
@@ -350,14 +350,14 @@ function parseAttributeWith<T>(
 
 function prefixAttributeName(
   decl: ModelDeclaration | EnumDeclaration | FieldDeclaration | EnumValue,
-  name: string
+  name: string,
 ): string {
   return (hasBlockAttributes(decl) ? "@@" : "@") + name;
 }
 
 export function applyOptional<T, U>(
   value: T | undefined,
-  fn: (arg: T) => U
+  fn: (arg: T) => U,
 ): U | undefined {
   return value !== undefined ? fn(value) : undefined;
 }

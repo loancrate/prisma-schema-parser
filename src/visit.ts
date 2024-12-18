@@ -54,7 +54,7 @@ export type PrismaAstVisitor = {
 
 export function visitAst<T extends PrismaAstNode>(
   node: T,
-  visitor: PrismaAstVisitor
+  visitor: PrismaAstVisitor,
 ): void {
   const nv = visitor[node.kind] as PrismaAstNodeVisitor<T> | undefined;
   nv?.enter?.(node);
@@ -75,17 +75,17 @@ export function visitAst<T extends PrismaAstNode>(
 type ReducedField<T, R> = T extends null | undefined
   ? T
   : T extends PrismaAstNode
-  ? R
-  : T extends ReadonlyArray<PrismaAstNode>
-  ? ReadonlyArray<R>
-  : T;
+    ? R
+    : T extends ReadonlyArray<PrismaAstNode>
+      ? ReadonlyArray<R>
+      : T;
 
 type ReducedNode<T, R> = {
   [K in keyof T]: ReducedField<T[K], R>;
 };
 
 export type PrismaAstNodeReducer<T extends PrismaAstNode, R> = (
-  node: ReducedNode<T, R>
+  node: ReducedNode<T, R>,
 ) => R;
 
 export type PrismaAstReducer<R> = {
@@ -94,13 +94,16 @@ export type PrismaAstReducer<R> = {
 
 export function reduceAst<T extends PrismaAstNode, R>(
   node: T,
-  reducer: PrismaAstReducer<R>
+  reducer: PrismaAstReducer<R>,
 ): R | undefined {
   const keys = nestedNodeMap[node.kind] as ReadonlyArray<keyof T>;
-  const reducedNode = keys.reduce((rn, key) => {
-    rn[key] = reduceField(node, key, reducer) as typeof rn[typeof key];
-    return rn;
-  }, {} as ReducedNode<T, R>);
+  const reducedNode = keys.reduce(
+    (rn, key) => {
+      rn[key] = reduceField(node, key, reducer) as (typeof rn)[typeof key];
+      return rn;
+    },
+    {} as ReducedNode<T, R>,
+  );
   const nr = reducer[node.kind] as PrismaAstNodeReducer<T, R> | undefined;
   return nr?.(reducedNode);
 }
@@ -108,7 +111,7 @@ export function reduceAst<T extends PrismaAstNode, R>(
 function reduceField<T extends PrismaAstNode, R>(
   node: T,
   key: keyof T,
-  reducer: PrismaAstReducer<R>
+  reducer: PrismaAstReducer<R>,
 ): MaybeArray<R> {
   const value = node[key] as MaybeNodes;
   if (Array.isArray(value) && value.every(isPrismaAstNode)) {

@@ -31,7 +31,7 @@ export function getDeclarationName(decl: PrismaDeclaration): string {
 }
 
 export function hasBlockAttributes(
-  decl: PrismaDeclaration
+  decl: PrismaDeclaration,
 ): decl is BlockAttributed {
   switch (decl.kind) {
     case "enum":
@@ -43,7 +43,7 @@ export function hasBlockAttributes(
 }
 
 export function hasFieldAttributes(
-  decl: PrismaDeclaration
+  decl: PrismaDeclaration,
 ): decl is FieldAttributed {
   switch (decl.kind) {
     case "enumValue":
@@ -55,7 +55,7 @@ export function hasFieldAttributes(
 }
 
 export function getDeclarationAttributes(
-  decl: PrismaDeclaration
+  decl: PrismaDeclaration,
 ): readonly SchemaAttribute[] {
   switch (decl.kind) {
     case "enum":
@@ -74,32 +74,32 @@ export function getDeclarationAttributes(
 
 export function getModelAttributes(decl: ModelDeclaration): BlockAttribute[] {
   return decl.members.filter(
-    (m): m is BlockAttribute => m.kind === "blockAttribute"
+    (m): m is BlockAttribute => m.kind === "blockAttribute",
   );
 }
 
 export function getEnumAttributes(decl: EnumDeclaration): BlockAttribute[] {
   return decl.members.filter(
-    (m): m is BlockAttribute => m.kind === "blockAttribute"
+    (m): m is BlockAttribute => m.kind === "blockAttribute",
   );
 }
 
 export function findFirstAttribute(
   attributes: readonly SchemaAttribute[] | undefined,
-  name: string
+  name: string,
 ): SchemaAttribute | undefined {
   return attributes?.find(
-    (attribute) => joinPath(attribute.path.value) === name
+    (attribute) => joinPath(attribute.path.value) === name,
   );
 }
 
 export function findAllAttributes(
   attributes: readonly SchemaAttribute[] | undefined,
-  name: string
+  name: string,
 ): SchemaAttribute[] {
   return (
     attributes?.filter(
-      (attribute) => joinPath(attribute.path.value) === name
+      (attribute) => joinPath(attribute.path.value) === name,
     ) ?? []
   );
 }
@@ -107,18 +107,18 @@ export function findAllAttributes(
 export function findArgument(
   args: readonly SchemaArgument[] | undefined,
   name: string,
-  position?: number
+  position?: number,
 ): NamedArgument | undefined {
   if (args) {
     const namedArg = args.find(
       (arg): arg is NamedArgument =>
-        arg.kind === "namedArgument" && arg.name.value === name
+        arg.kind === "namedArgument" && arg.name.value === name,
     );
     if (namedArg) {
       return namedArg;
     }
     const unnamedArgs = args.filter(
-      (arg): arg is SchemaExpression => arg.kind !== "namedArgument"
+      (arg): arg is SchemaExpression => arg.kind !== "namedArgument",
     );
     if (position != null && position < unnamedArgs.length) {
       const expression = unnamedArgs[position];
@@ -134,7 +134,7 @@ export function findArgument(
 export function getArgument(
   args: readonly SchemaArgument[] | undefined,
   name: string,
-  position?: number
+  position?: number,
 ): NamedArgument {
   const arg = findArgument(args, name, position);
   if (!arg) {
@@ -148,7 +148,7 @@ export function getArgumentExpression(arg: SchemaArgument): SchemaExpression {
 }
 
 export function asBooleanArgument(
-  arg: SchemaArgument | undefined
+  arg: SchemaArgument | undefined,
 ): boolean | undefined {
   if (arg) {
     const expr = getArgumentExpression(arg);
@@ -167,7 +167,7 @@ export function readBooleanArgument(arg: SchemaArgument): boolean {
 }
 
 export function asNumberArgument(
-  arg: SchemaArgument | undefined
+  arg: SchemaArgument | undefined,
 ): number | undefined {
   if (arg) {
     const expr = getArgumentExpression(arg);
@@ -186,7 +186,7 @@ export function readNumberArgument(arg: SchemaArgument): number {
 }
 
 export function asStringArgument(
-  arg: SchemaArgument | undefined
+  arg: SchemaArgument | undefined,
 ): string | undefined {
   if (arg) {
     const expr = getArgumentExpression(arg);
@@ -205,7 +205,7 @@ export function readStringArgument(arg: SchemaArgument): string {
 }
 
 export function asFieldReferenceArgument(
-  arg: SchemaArgument | undefined
+  arg: SchemaArgument | undefined,
 ): string | undefined {
   if (arg) {
     const expr = getArgumentExpression(arg);
@@ -224,7 +224,7 @@ export function readFieldReferenceArgument(arg: SchemaArgument): string {
 }
 
 export function asFieldReferencesArgument(
-  arg: SchemaArgument | undefined
+  arg: SchemaArgument | undefined,
 ): string[] | undefined {
   if (arg) {
     const expr = getArgumentExpression(arg);
@@ -247,7 +247,7 @@ export function readFieldReferencesArgument(arg: SchemaArgument): string[] {
 
 export function getArgumentTypeError(
   arg: SchemaArgument,
-  expectedType: string
+  expectedType: string,
 ): Error {
   let message = `${expectedType} expected`;
   let { kind } = arg;
@@ -276,7 +276,7 @@ export function getExpressionValue(expr: SchemaExpression): JsonValue {
 }
 
 export function getArgumentValues(
-  args: SchemaArgument[]
+  args: SchemaArgument[],
 ): JsonObject | JsonArray {
   if (args.every((arg): arg is NamedArgument => arg.kind === "namedArgument")) {
     return getArgumentValuesObject(args);
@@ -286,7 +286,7 @@ export function getArgumentValues(
 
 export function getArgumentValuesArray(args: SchemaArgument[]): JsonArray {
   return args.map((arg) =>
-    getExpressionValue(arg.kind === "namedArgument" ? arg.expression : arg)
+    getExpressionValue(arg.kind === "namedArgument" ? arg.expression : arg),
   );
 }
 
@@ -296,6 +296,6 @@ export function getArgumentValuesObject(args: NamedArgument[]): JsonObject {
       const name = arg.name.value;
       const value = getExpressionValue(arg.expression);
       return [name, value];
-    })
+    }),
   );
 }

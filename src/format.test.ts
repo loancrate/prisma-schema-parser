@@ -16,7 +16,7 @@ describe("formatAst", () => {
       encoding: "utf8",
     });
     expect(normalizeWhitespace(formatAst(testAst))).toBe(
-      normalizeWhitespace(schema)
+      normalizeWhitespace(schema),
     );
   });
 
@@ -36,7 +36,7 @@ describe("formatAst", () => {
           { kind: "literal", value: 1 },
           { kind: "literal", value: true },
         ],
-      })
+      }),
     ).toBe("[1, true]");
   });
 
@@ -53,7 +53,7 @@ describe("formatAst", () => {
             expression: { kind: "literal", value: "abc" },
           },
         ],
-      })
+      }),
     ).toBe('foo.bar(1, name: "abc")');
   });
 
@@ -62,7 +62,7 @@ describe("formatAst", () => {
       formatAst({
         kind: "functionCall",
         path: { kind: "path", value: ["foo", "bar"] },
-      })
+      }),
     ).toBe("foo.bar()");
   });
 
@@ -93,7 +93,7 @@ describe("formatAst", () => {
             ],
           },
         ],
-      })
+      }),
     ).toBe("type UUID = String @id @default(uuid())");
   });
 
@@ -116,7 +116,7 @@ describe("formatAst", () => {
             attributes: [],
           },
         ],
-      })
+      }),
     ).toBe("model M {\n  f String!\n}");
   });
 });
@@ -133,7 +133,7 @@ describe("formatSourceRange", () => {
       formatSourceRange({
         start: { line: 1, column: 2, offset: 3 },
         end: { line: 1, column: 5, offset: 6 },
-      })
+      }),
     ).toBe("1:2-5");
   });
   test("different lines", () => {
@@ -141,7 +141,7 @@ describe("formatSourceRange", () => {
       formatSourceRange({
         start: { line: 1, column: 2, offset: 3 },
         end: { line: 4, column: 5, offset: 6 },
-      })
+      }),
     ).toBe("1:2-4:5");
   });
 });

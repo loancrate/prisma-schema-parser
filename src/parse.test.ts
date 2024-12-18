@@ -44,7 +44,7 @@ describe("parsePrismaSchema", () => {
 
   test("complete schema", () => {
     const ast = parsePrismaSchema(
-      readFileSync(join(testData, "schema.prisma"), { encoding: "utf8" })
+      readFileSync(join(testData, "schema.prisma"), { encoding: "utf8" }),
     );
     // Uncomment temporarily to fix test-data/ast.json
     // console.log(JSON.stringify(ast));
@@ -184,7 +184,7 @@ describe("parsePrismaType", () => {
 describe("parsePrismaExpression", () => {
   test("path", () => {
     expect(
-      stripAst(parsePrismaExpression("foo.bar"))
+      stripAst(parsePrismaExpression("foo.bar")),
     ).toStrictEqual<SchemaExpression>({
       kind: "path",
       value: ["foo", "bar"],
@@ -193,7 +193,7 @@ describe("parsePrismaExpression", () => {
 
   test("array", () => {
     expect(
-      stripAst(parsePrismaExpression('["foo", "bar"]'))
+      stripAst(parsePrismaExpression('["foo", "bar"]')),
     ).toStrictEqual<SchemaExpression>({
       kind: "array",
       items: [
@@ -211,7 +211,7 @@ describe("parsePrismaExpression", () => {
 
   test("literal", () => {
     expect(
-      stripAst(parsePrismaExpression('"foo.bar"'))
+      stripAst(parsePrismaExpression('"foo.bar"')),
     ).toStrictEqual<SchemaExpression>({
       kind: "literal",
       value: "foo.bar",
@@ -220,7 +220,7 @@ describe("parsePrismaExpression", () => {
 
   test("function call", () => {
     expect(
-      stripAst(parsePrismaExpression('foo("bar")'))
+      stripAst(parsePrismaExpression('foo("bar")')),
     ).toStrictEqual<SchemaExpression>({
       kind: "functionCall",
       path: { kind: "path", value: ["foo"] },

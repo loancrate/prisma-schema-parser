@@ -23,13 +23,13 @@ describe("getDeclarationName", () => {
         kind: "datasource",
         name: { kind: "name", value: "db" },
         members: [],
-      })
+      }),
     ).toBe("datasource db");
     expect(
       getDeclarationName({
         kind: "commentBlock",
         comments: [],
-      })
+      }),
     ).toBe("comment block");
   });
 });
@@ -41,7 +41,7 @@ describe("hasBlockAttributes", () => {
         kind: "enum",
         name: { kind: "name", value: "x" },
         members: [],
-      })
+      }),
     ).toBe(true);
   });
   test("false", () => {
@@ -49,7 +49,7 @@ describe("hasBlockAttributes", () => {
       hasBlockAttributes({
         kind: "commentBlock",
         comments: [],
-      })
+      }),
     ).toBe(false);
   });
 });
@@ -60,7 +60,7 @@ describe("hasFieldAttributes", () => {
       hasFieldAttributes({
         kind: "enumValue",
         name: { kind: "name", value: "x" },
-      })
+      }),
     ).toBe(true);
   });
   test("false", () => {
@@ -68,7 +68,7 @@ describe("hasFieldAttributes", () => {
       hasFieldAttributes({
         kind: "commentBlock",
         comments: [],
-      })
+      }),
     ).toBe(false);
   });
 });
@@ -83,7 +83,7 @@ describe("getDeclarationAttributes", () => {
           { kind: "blockAttribute", path: { kind: "path", value: ["map"] } },
           { kind: "enumValue", name: { kind: "name", value: "y" } },
         ],
-      })
+      }),
     ).toStrictEqual([
       { kind: "blockAttribute", path: { kind: "path", value: ["map"] } },
     ]);
@@ -96,7 +96,7 @@ describe("getDeclarationAttributes", () => {
         attributes: [
           { kind: "fieldAttribute", path: { kind: "path", value: ["map"] } },
         ],
-      })
+      }),
     ).toStrictEqual([
       { kind: "fieldAttribute", path: { kind: "path", value: ["map"] } },
     ]);
@@ -106,7 +106,7 @@ describe("getDeclarationAttributes", () => {
       getDeclarationAttributes({
         kind: "commentBlock",
         comments: [],
-      })
+      }),
     ).toStrictEqual([]);
   });
 });
@@ -132,8 +132,8 @@ describe("findFirstAttribute", () => {
             args: [{ kind: "literal", value: 3 }],
           },
         ],
-        "b"
-      )
+        "b",
+      ),
     ).toStrictEqual<SchemaAttribute>({
       kind: "blockAttribute",
       path: { kind: "path", value: ["b"] },
@@ -163,8 +163,8 @@ describe("findAllAttributes", () => {
             args: [{ kind: "literal", value: 3 }],
           },
         ],
-        "b"
-      )
+        "b",
+      ),
     ).toStrictEqual<SchemaAttribute[]>([
       {
         kind: "blockAttribute",
@@ -187,7 +187,7 @@ describe("findAllAttributes", () => {
 describe("getArgument", () => {
   test("not found", () => {
     expect(() => getArgument([], "name")).toThrow(
-      'Argument "name" is required'
+      'Argument "name" is required',
     );
   });
 });
@@ -199,7 +199,7 @@ describe("readBooleanArgument", () => {
 
   test("not boolean", () => {
     expect(() => readBooleanArgument({ kind: "literal", value: 1 })).toThrow(
-      "Boolean literal expected but got literal number"
+      "Boolean literal expected but got literal number",
     );
   });
 });
@@ -211,7 +211,7 @@ describe("readNumberArgument", () => {
 
   test("not number", () => {
     expect(() => readNumberArgument({ kind: "literal", value: true })).toThrow(
-      "Number literal expected but got literal boolean"
+      "Number literal expected but got literal boolean",
     );
   });
 });
@@ -223,7 +223,7 @@ describe("readStringArgument", () => {
 
   test("not string", () => {
     expect(() => readStringArgument({ kind: "literal", value: 1 })).toThrow(
-      "String literal expected but got literal number"
+      "String literal expected but got literal number",
     );
   });
 });
@@ -231,13 +231,13 @@ describe("readStringArgument", () => {
 describe("readFieldReferenceArgument", () => {
   test("field reference", () => {
     expect(readFieldReferenceArgument({ kind: "path", value: ["x"] })).toBe(
-      "x"
+      "x",
     );
   });
 
   test("not field reference", () => {
     expect(() =>
-      readFieldReferenceArgument({ kind: "literal", value: "x" })
+      readFieldReferenceArgument({ kind: "literal", value: "x" }),
     ).toThrow("Field reference expected but got literal string");
   });
 });
@@ -251,13 +251,13 @@ describe("readFieldReferencesArgument", () => {
           { kind: "path", value: ["x"] },
           { kind: "path", value: ["y"] },
         ],
-      })
+      }),
     ).toStrictEqual(["x", "y"]);
   });
 
   test("not field references", () => {
     expect(() =>
-      readFieldReferencesArgument({ kind: "literal", value: "x" })
+      readFieldReferencesArgument({ kind: "literal", value: "x" }),
     ).toThrow("Field references expected but got literal string");
   });
 });
@@ -276,7 +276,7 @@ describe("getArgumentValues", () => {
           name: { kind: "name", value: "sort" },
           expression: { kind: "literal", value: "Desc" },
         },
-      ])
+      ]),
     ).toStrictEqual<JsonObject>({
       map: "_id",
       sort: "Desc",
@@ -301,7 +301,7 @@ describe("getArgumentValues", () => {
             path: { kind: "path", value: ["now"] },
           },
         },
-      ])
+      ]),
     ).toStrictEqual<JsonArray>([[1, 2], "now()"]);
   });
 });

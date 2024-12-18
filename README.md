@@ -37,7 +37,7 @@ import { readFileSync } from "fs";
 import { formatAst, parsePrismaSchema } from "@loancrate/prisma-schema-parser";
 
 const ast = parsePrismaSchema(
-  readFileSync("test-data/schema.prisma", { encoding: "utf8" })
+  readFileSync("test-data/schema.prisma", { encoding: "utf8" }),
 );
 // ... manipulate the schema ...
 console.log(formatAst(ast));

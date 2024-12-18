@@ -54,7 +54,7 @@ describe("findIdFieldAttribute", () => {
             ],
           },
         ],
-      })
+      }),
     ).toStrictEqual<IdFieldAttribute>({
       map: "_id",
       length: 10,
@@ -82,7 +82,7 @@ describe("findIdFieldAttribute", () => {
             ],
           },
         ],
-      })
+      }),
     ).toThrow("Invalid attribute @id for field id: Invalid sort order: none");
   });
 });
@@ -108,7 +108,7 @@ describe("findIdBlockAttribute", () => {
             ],
           },
         ],
-      })
+      }),
     ).toStrictEqual<IdBlockAttribute>({
       fields: [{ name: "a" }, { name: "b" }],
       name: undefined,
@@ -138,7 +138,7 @@ describe("findDefaultFieldAttribute", () => {
             ],
           },
         ],
-      })
+      }),
     ).toStrictEqual<DefaultFieldAttribute>({
       expression: {
         kind: "functionCall",
@@ -163,7 +163,7 @@ describe("findUniqueFieldAttribute", () => {
             path: { kind: "path", value: ["unique"] },
           },
         ],
-      })
+      }),
     ).toStrictEqual<UniqueFieldAttribute>({
       map: undefined,
       length: undefined,
@@ -194,7 +194,7 @@ describe("findUniqueBlockAttributes", () => {
             ],
           },
         ],
-      })
+      }),
     ).toStrictEqual<UniqueBlockAttribute[]>([
       {
         fields: [{ name: "a" }, { name: "b" }],
@@ -273,7 +273,7 @@ describe("findIndexBlockAttributes", () => {
             args: [{ kind: "path", value: ["e"] }],
           },
         ],
-      })
+      }),
     ).toStrictEqual<IndexBlockAttribute[]>([
       {
         fields: [
@@ -326,9 +326,9 @@ describe("findIndexBlockAttributes", () => {
             },
           },
         ],
-      })
+      }),
     ).toThrow(
-      "Invalid attribute @@index at 31:3-23 for model M: Field reference or function call expected but got literal"
+      "Invalid attribute @@index at 31:3-23 for model M: Field reference or function call expected but got literal",
     );
   });
 
@@ -366,9 +366,9 @@ describe("findIndexBlockAttributes", () => {
             },
           },
         ],
-      })
+      }),
     ).toThrow(
-      "Invalid attribute @@index at 31:3-23 for model M: Identifier or function call expected for argument ops but got literal"
+      "Invalid attribute @@index at 31:3-23 for model M: Identifier or function call expected for argument ops but got literal",
     );
   });
 });
@@ -420,7 +420,7 @@ describe("findRelationFieldAttribute", () => {
             ],
           },
         ],
-      })
+      }),
     ).toStrictEqual<RelationFieldAttribute>({
       name: undefined,
       fields: ["parentId"],
@@ -452,9 +452,9 @@ describe("findRelationFieldAttribute", () => {
             ],
           },
         ],
-      })
+      }),
     ).toThrow(
-      "Invalid attribute @relation for field parent: Invalid referential action: Explode"
+      "Invalid attribute @relation for field parent: Invalid referential action: Explode",
     );
   });
 
@@ -480,9 +480,9 @@ describe("findRelationFieldAttribute", () => {
             ],
           },
         ],
-      })
+      }),
     ).toThrow(
-      "Invalid attribute @relation for field parent: Referential action expected for argument onDelete but got literal"
+      "Invalid attribute @relation for field parent: Referential action expected for argument onDelete but got literal",
     );
   });
 });
@@ -501,7 +501,7 @@ describe("findMapFieldAttribute", () => {
             args: [{ kind: "literal", value: "_id" }],
           },
         ],
-      })
+      }),
     ).toStrictEqual<MapFieldAttribute>({
       name: "_id",
     });
@@ -512,7 +512,7 @@ describe("findMapFieldAttribute", () => {
         kind: "field",
         name: { kind: "name", value: "id" },
         type: { kind: "typeId", name: { kind: "name", value: "String" } },
-      })
+      }),
     ).toBeUndefined();
   });
   test("multiple", () => {
@@ -533,7 +533,7 @@ describe("findMapFieldAttribute", () => {
             args: [{ kind: "literal", value: "id2" }],
           },
         ],
-      })
+      }),
     ).toThrow("Multiple instances of @map attribute");
   });
 });
@@ -551,7 +551,7 @@ describe("findMapBlockAttribute", () => {
             args: [{ kind: "literal", value: "m" }],
           },
         ],
-      })
+      }),
     ).toStrictEqual<MapBlockAttribute>({
       name: "m",
     });
@@ -562,7 +562,7 @@ describe("findMapBlockAttribute", () => {
         kind: "model",
         name: { kind: "name", value: "M" },
         members: [],
-      })
+      }),
     ).toBeUndefined();
   });
   test("multiple", () => {
@@ -582,7 +582,7 @@ describe("findMapBlockAttribute", () => {
             args: [{ kind: "literal", value: "m2" }],
           },
         ],
-      })
+      }),
     ).toThrow("Multiple instances of @@map attribute");
   });
 });

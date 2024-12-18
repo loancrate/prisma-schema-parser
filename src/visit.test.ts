@@ -29,7 +29,7 @@ describe("visit", () => {
           enter: enterBlockAttribute,
           leave: leaveBlockAttribute,
         },
-      }
+      },
     );
     expect(enterModel).toHaveBeenCalled();
     expect(leaveModel).toHaveBeenCalled();
