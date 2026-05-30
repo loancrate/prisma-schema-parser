@@ -1,6 +1,5 @@
 import { asError } from "catch-unknown";
 
-import "error-cause/auto";
 import {
   findAllAttributes,
   findArgument,
